@@ -12,7 +12,7 @@
   </div>
 </template>
 <script setup>
-import axios from '@/plugins/api.js'
+import axios from 'axios'
 import { ref } from 'vue'
 
 const produtos = ref([])

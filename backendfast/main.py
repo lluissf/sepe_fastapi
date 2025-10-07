@@ -1,5 +1,12 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 app = FastAPI()
+
+# Modelo de dados para Produto
+class Produto(BaseModel):
+    id: int
+    nome: str
+    preco: float
 
 # Simulação de um banco de dados de produtos
 produtos = [

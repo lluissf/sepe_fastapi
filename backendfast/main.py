@@ -51,11 +51,13 @@ def obter_produto(produto_id: int):
 #    produtos.append(produto.dict())
 #    return produto
 
+class ProdutoCreate(BaseModel):
+    nome: str
+    preco: float
 # Adicionar um novo produto
 @app.post("/produtos/")
-def criar_produto(nome: str, preco: float):
+def criar_produto(produto: ProdutoCreate):
     global ultimo_id
-    ultimo_id += 1
-    novo_produto = {"id": ultimo_id, "nome": nome, "preco": preco}
+    novo_produto = {"id": ultimo_id + 1, "nome": produto.nome, "preco": produto.preco}
     produtos.append(novo_produto)
     return novo_produto

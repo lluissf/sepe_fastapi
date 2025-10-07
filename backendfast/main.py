@@ -17,3 +17,9 @@ produtos = [
 @app.get("/produtos")
 def listar_produtos():
     return produtos
+@app.get("/produtos/{produto_id}")
+def obter_produto(produto_id: int):
+    for produto in produtos:
+        if produto["id"] == produto_id:
+            return produto
+    return {"error": "Produto não encontrado"}

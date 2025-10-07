@@ -17,6 +17,9 @@ class Produto(BaseModel):
     nome: str
     preco: float
 
+class ProdutoCreate(BaseModel):
+    nome: str
+    preco: float
 # Simulação de um banco de dados de produtos
 produtos = [
     {"id": 1, "nome": "Notebook", "preco": 3500},
@@ -45,15 +48,6 @@ def obter_produto(produto_id: int):
             return produto
     return {"error": "Produto não encontrado"}
 
-#Adicionar um novo produto
-#@app.post("/produtos", response_model=Produto)
-#def adicionar_produto(produto: Produto):
-#    produtos.append(produto.dict())
-#    return produto
-
-class ProdutoCreate(BaseModel):
-    nome: str
-    preco: float
 # Adicionar um novo produto
 @app.post("/produtos/")
 def criar_produto(produto: ProdutoCreate):
